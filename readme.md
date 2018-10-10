@@ -11,6 +11,11 @@ Simple starter C++ project with:
 - cmake
 - googletest
 
+## Product Backlog and Sprint Schedule
+The process development schedule and the sprint plan can be found in the [link][reference-id-for-srint-plan].
+
+[reference-id-for-srint-plan]: https://docs.google.com/spreadsheets/d/1XKLqew9CH7pwG7_CvTs3gmQOBBpcz4UapiZnu-ZG-o4/edit#gid=383324177
+
 ## Standard install via command-line
 ```
 git clone --recursive https://github.com/dpiet/cpp-boilerplate
