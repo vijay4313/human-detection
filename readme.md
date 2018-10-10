@@ -1,6 +1,7 @@
-# C++ Boilerplate
+# Human Obstruction Detection with 2D LiDAR
 [![Build Status](https://travis-ci.org/vijay4313/human-detection.svg?branch=master)](https://travis-ci.org/vijay4313/human-detection)
 [![Coverage Status](https://coveralls.io/repos/github/vijay4313/human-detection/badge.svg?branch=master)](https://coveralls.io/github/vijay4313/human-detection?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 
 ## Overview
