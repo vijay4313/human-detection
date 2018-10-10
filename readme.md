@@ -6,10 +6,10 @@
 
 ## Overview
 
-Simple starter C++ project with:
+Obstacle/Human detection plays a vital role in field of robotics. Specifically, in the field of autonomous driving, the ability to accurately detect and track humans presents a major barrier to the large scale deployment of service robots in populated environments. This project aims to implement a robust human obstacle detection framework, utilizing 2D LiDAR data and sophisticated object detection algorithms on C++ platform.
 
-- cmake
-- googletest
+##### Methodology:
+The system development follows a first principles approach with definitive stages, Project initiation, Data procurement, Data preprocessing, Clustering, Estimation & Matching, Testing, Demo. The advances with the data procurement phase with the kickoff approval in the project initiation phase. The project is carried out with agile concepts as a backbone, showcasing the concepts of Solo iterative process (SIP), Test Driven Development (TDD) and Continuous Integration (CI). The scrum/sprint plan for th project is attached below.
 
 ## Product Backlog and Sprint Schedule
 The process development schedule and the sprint plan can be found in the [link][reference-id-for-srint-plan].
@@ -18,7 +18,7 @@ The process development schedule and the sprint plan can be found in the [link][
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone --recursive https://github.com/vijay4313/human-detection
 cd <path to repository>
 mkdir build
 cd build
@@ -45,7 +45,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/dpiet/cpp-boilerplate
+git clone --recursive https://github.com/vijay4313/human-detection
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
@@ -54,7 +54,7 @@ In your work directory, use cmake to create an Eclipse project for an [out-of-so
 cd ~/workspace
 mkdir -p boilerplate-eclipse
 cd boilerplate-eclipse
-cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../cpp-boilerplate/
+cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../Project/
 ```
 
 ## Import
