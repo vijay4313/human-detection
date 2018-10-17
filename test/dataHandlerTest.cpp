@@ -1,11 +1,10 @@
 #include <gtest/gtest.h>
 
-
 #include "../include/dataHandler.h"
 
 
 
-TEST(ObjectDetector, InitiationTest) {
+TEST(dataHandler, InitiationTest) {
 	std::string file = "../data/1418381817129923.bin";
 	dataHandler* mydata = new dataHandler();
 	mydata->importData(file);

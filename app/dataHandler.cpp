@@ -72,13 +72,4 @@ vector<double> dataHandler::genRMat(){
 	return rMat;
 }
 
-/*
-double dataHandler::genSubSamples(double &subRatio){
-	return 1.0;
-}
-
-double dataHandler::genSubSamples(double &subRatio){
-	return 1.0;
-}
-*/
 
