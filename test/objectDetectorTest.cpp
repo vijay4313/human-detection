@@ -1,9 +1,12 @@
-/*
- * objectDetectorTest.cpp
+/**
+ *  Copyright 2018 Venkatraman Narayanan
+ *  @file    objectDetectorTest.cpp
+ *  @author  Venkatraman Narayanan (vijay4313)
+ *  @date    10/14/2018
  *
- *  Created on: Oct 16, 2018
- *      Author: venkatraman
+ *  @brief Testing module for objectDetector class
  */
+
 
 #include <gtest/gtest.h>
 #include "dataHandler.h"

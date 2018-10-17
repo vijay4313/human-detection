@@ -1,5 +1,13 @@
-#include <gtest/gtest.h>
+/**
+ *  Copyright 2018 Venkatraman Narayanan
+ *  @file    DataHandlerTest.cpp
+ *  @author  Venkatraman Narayanan (vijay4313)
+ *  @date    10/14/2018
+ *
+ *  @brief Testing module for dataHandler class
+ */
 
+#include <gtest/gtest.h>
 #include "dataHandler.h"
 
 

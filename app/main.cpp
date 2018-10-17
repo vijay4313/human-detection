@@ -1,3 +1,13 @@
+/**
+ *  Copyright 2018 Venkatraman Narayanan
+ *  @file    main.cpp
+ *  @author  Venkatraman Narayanan (vijay4313)
+ *  @date    10/14/2018
+ *
+ *  @brief main routine for human obstacle detection
+ */
+
+
 #include <iostream>
 #include <memory>
 
