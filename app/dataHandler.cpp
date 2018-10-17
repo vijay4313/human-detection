@@ -8,11 +8,12 @@
 #include <iostream>
 #include <fstream>
 #include <cstdint>
+#include <list>
+#include <numeric>
 #include "dataHandler.h"
 
 dataHandler::dataHandler() {
 	// TODO Auto-generated constructor stub
-	numFiles = 1;
 
 }
 
@@ -20,7 +21,7 @@ dataHandler::~dataHandler() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<double> dataHandler::importData(std::string &fileName){
+void dataHandler::importData(std::string &fileName){
 
 	std::ifstream file(fileName, std::ios::in|std::ios::binary|std::ios::ate);
 
@@ -35,12 +36,40 @@ vector<double> dataHandler::importData(std::string &fileName){
 	file.read (memblock, size);
 	file.close();
 
-	std::cout << "the entire file content is in memory \n";
 	double* double_values = (double*)memblock;//reinterpret as doubles
 	vector<double> values(double_values, double_values + (size / sizeof(double)));
-	return values;
+	std::copy(values.begin(), values.end(), std::back_inserter(scans));
+}
 
 
+vector<double> dataHandler::genXMat(){
+	vector<double> xMat;
+
+	for(int i = 0; i < scans.size(); i+=3){
+		xMat.push_back(scans[i]);
+	}
+
+	return xMat;
+}
+
+vector<double> dataHandler::genYMat(){
+	vector<double> yMat;
+
+	for(int i = 1; i < scans.size(); i+=3){
+		yMat.push_back(scans[i]);
+	}
+
+	return yMat;
+}
+
+vector<double> dataHandler::genRMat(){
+	vector<double> rMat;
+
+	for(int i = 2; i < scans.size(); i+=3){
+		rMat.push_back(scans[i]);
+	}
+
+	return rMat;
 }
 
 /*

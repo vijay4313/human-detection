@@ -24,11 +24,13 @@ using std::vector;
 class dataHandler {
 private:
 	vector<double> scans;
-	int numFiles = 1;
 public:
 	dataHandler();
 	virtual ~dataHandler();
-	vector<double> importData(std::string &fileName);
+	void importData(std::string &fileName);
+	vector<double> genXMat();
+	vector<double> genYMat();
+	vector<double> genRMat();
 //	/*vector<double>*/ double genSubSamples(double &subRatio);
 //	/*vector<double>*/ double getiFrame(double &iFrame);
 };
