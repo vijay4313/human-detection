@@ -40,7 +40,7 @@ dataHandler::~dataHandler() {
  * @param fileName - The .bin file to
  * 					 load data from
  */
-void dataHandler::importData(std::string &fileName) {
+void dataHandler::importData(const std::string &fileName) {
 	std::ifstream file(fileName, std::ios::in|std::ios::binary|std::ios::ate);
 
 	auto size = file.tellg();

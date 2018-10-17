@@ -66,7 +66,7 @@ void objectDetector::findCluster(const std::vector<double> &data) {
  * @return diffVec - vector of squared
  * 				     distance from each centroid
  */
-std::vector<double> objectDetector::getLoss(double &v1) {
+std::vector<double> objectDetector::getLoss(const double &v1) {
 	std::vector<double> diffVec;  // Placeholder for loss value
 	for (auto &i : centroids) {
 		double diff = i - v1;
