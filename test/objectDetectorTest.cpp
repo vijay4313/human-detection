@@ -6,8 +6,8 @@
  */
 
 #include <gtest/gtest.h>
-#include "../include/dataHandler.h"
-#include "../include/objectDetector.h"
+#include "dataHandler.h"
+#include "objectDetector.h"
 
 
 
@@ -23,9 +23,8 @@ TEST(ObjectDetector, InitiationTest) {
     std::vector<double> detectX = mydetector->findClusterLoc(xMat);
     std::vector<double> detectY = mydetector->findClusterLoc(yMat);
 
-	EXPECT_EQ(5, xMat.size());
-	EXPECT_EQ(5, yMat.size());
-	EXPECT_EQ(5, rMat.size());
+	EXPECT_EQ(5, detectX.size());
+	EXPECT_EQ(5, detectY.size());
 }
 
 
