@@ -50,7 +50,7 @@ void dataHandler::importData(const std::string &fileName) {
 	file.read(memblock, size);
 	file.close();
 
-	double double_values = reinterpret_cast<double*>(memblock);  // reinterpret as doubles
+	double* double_values = (double*) memblock;  // reinterpret as doubles
 	vector<double> values(double_values, double_values + (size / sizeof(double)));
 	std::copy(values.begin(), values.end(), std::back_inserter(scans));
 }
@@ -62,7 +62,7 @@ void dataHandler::importData(const std::string &fileName) {
 vector<double> dataHandler::genXMat() {
 	vector<double> xMat;  // Placeholder for X-axis pos values
 
-	for(int i = 0; i < scans.size(); i+=3) {
+	for(unsigned int i = 0; i < scans.size(); i+=3) {
 		xMat.push_back(scans[i]);
 	}
 
@@ -76,7 +76,7 @@ vector<double> dataHandler::genXMat() {
 vector<double> dataHandler::genYMat() {
 	vector<double> yMat;  // Placeholder for Y-axis pos values
 
-	for(int i = 1; i < scans.size(); i+=3) {
+	for(unsigned int i = 1; i < scans.size(); i+=3) {
 		yMat.push_back(scans[i]);
 	}
 
@@ -91,7 +91,7 @@ vector<double> dataHandler::genYMat() {
 vector<double> dataHandler::genRMat() {
 	vector<double> rMat;  // Placeholder for reflectance values
 
-	for(int i = 2; i < scans.size(); i+=3) {
+	for(unsigned int i = 2; i < scans.size(); i+=3) {
 		rMat.push_back(scans[i]);
 	}
 
