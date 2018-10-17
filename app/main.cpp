@@ -14,8 +14,7 @@
 #include "dataHandler.h"
 #include "objectDetector.h"
 
-int main()
-{
+int main() {
     std::string file = "../data/1418381817129923.bin";
     dataHandler* mydata = new dataHandler();
     mydata->importData(file);
@@ -27,9 +26,9 @@ int main()
     std::vector<double> detectX = mydetector->findClusterLoc(xMat);
     std::vector<double> detectY = mydetector->findClusterLoc(yMat);
 
-    for (auto i = 0; i < detectX.size(); i++){
-    	std::cout << "Obstacle " << i <<" X: "<<detectX[i]<<
-    			" Y: "<< detectY[i]<<std::endl;
+    for (auto i = 0; i < detectX.size(); i++) {
+    	std::cout << "Obstacle " << i << " X: " << detectX[i] <<
+    			" Y: " << detectY[i] << std::endl;
     }
     return 0;
 }

@@ -17,51 +17,52 @@
 #include <vector>
 #include <string>
 
-#ifndef APP_DATAHANDLER_H_
-#define APP_DATAHANDLER_H_
+#ifndef INCLUDE_DATAHANDLER_H_
+#define INCLUDE_DATAHANDLER_H_
 
 using std::vector;
 
 class dataHandler {
-private:
-	vector<double> scans;  //Placeholder for LiDAR scans
-public:
-	/*
-	 * @brief Default constructor for dataHandler
-	 */
-	dataHandler();
+	private:
+		vector<double> scans;  // Placeholder for LiDAR scans
 
-	/*
-	 * @brief Default destructor for dataHandler
-	 */
-	virtual ~dataHandler();
+	public:
+		/*
+		 * @brief Default constructor for dataHandler
+		 */
+		dataHandler();
 
-	/*
-	 * @brief Routine to import data
-	 * 		  from given file
-	 * @param fileName - The .bin file to
-	 * 					 load data from
-	 */
-	void importData(std::string &fileName);
+		/*
+		 * @brief Default destructor for dataHandler
+		 */
+		virtual ~dataHandler();
 
-	/*
-	 * @brief Routine to extract X-axis pos values
-	 * @return vector of X-axis positions
-	 */
-	vector<double> genXMat();
+		/*
+		 * @brief Routine to import data
+		 * 		  from given file
+		 * @param fileName - The .bin file to
+		 * 					 load data from
+		 */
+		void importData(const std::string &fileName);
 
-	/*
-	 * @brief Routine to extract Y-axis pos values
-	 * @return vector of Y-axis positions
-	 */
-	vector<double> genYMat();
+		/*
+		 * @brief Routine to extract X-axis pos values
+		 * @return vector of X-axis positions
+		 */
+		vector<double> genXMat();
 
-	/*
-	 * @brief Routine to extract
-	 * 		  reflectance values of LiDAR
-	 * @return vector of reflectance values
-	 */
-	vector<double> genRMat();
+		/*
+		 * @brief Routine to extract Y-axis pos values
+		 * @return vector of Y-axis positions
+		 */
+		vector<double> genYMat();
+
+		/*
+		 * @brief Routine to extract
+		 * 		  reflectance values of LiDAR
+		 * @return vector of reflectance values
+		 */
+		vector<double> genRMat();
 };
 
-#endif /* APP_DATAHANDLER_H_ */
+#endif // INCLUDE_DATAHANDLER_H_

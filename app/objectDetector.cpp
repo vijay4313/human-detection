@@ -39,18 +39,18 @@ objectDetector::~objectDetector() {
  * @param data - The vector of LiDAR
  * 		         reflectance data
  */
-void objectDetector::findCluster(const std::vector<double> &data){
+void objectDetector::findCluster(const std::vector<double> &data) {
 	// Routine to generate random clusters in data
-	for(int i = 0; i < maxDetects; i++){
+	for(int i = 0; i < maxDetects; i++) {
 		int val = rand()% data.size();
 		centroids.push_back(data[val]);
 		centroidPos.push_back(val);
 	}
 
 	// Routine to identify the right cluster
-	std::map<double,int> assignments;
-	for (int i = 0; i<100; i++){
-		for (auto j : data){
+	std::map<double, int> assignments;
+	for (int i = 0; i < 100; i++) {
+		for (auto j : data) {
 			auto differences = getLoss(j);
 			auto min = *std::min_element(differences.begin(), differences.end());
 			assignments[j] = min;
@@ -66,9 +66,9 @@ void objectDetector::findCluster(const std::vector<double> &data){
  * @return diffVec - vector of squared
  * 				     distance from each centroid
  */
-std::vector<double> objectDetector::getLoss(double &v1){
-	std::vector<double> diffVec; // Placeholder for loss value
-	for (auto &i : centroids){
+std::vector<double> objectDetector::getLoss(double &v1) {
+	std::vector<double> diffVec;  // Placeholder for loss value
+	for (auto &i : centroids) {
 		double diff = i - v1;
 		diffVec.push_back(diff * diff);
 	}
@@ -81,9 +81,9 @@ std::vector<double> objectDetector::getLoss(double &v1){
  * @param data - vector of X/Y positions
  * @return v - location of cluster centroids (X/Y axis)
  */
-std::vector<double> objectDetector::findClusterLoc(const std::vector<double> &data){
+std::vector<double> objectDetector::findClusterLoc(const std::vector<double> &data) {
 	std::vector<double> v;  // Placeholder for cluster location
-	for(auto &j : centroidPos){
+	for(auto &j : centroidPos) {
 		v.push_back(data[j]);
 	}
 	return v;
