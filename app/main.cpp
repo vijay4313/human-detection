@@ -52,7 +52,7 @@ int main() {
   auto detectX = mydetector->findClusterLocX();
   auto detectY = mydetector->findClusterLocY();
 
-  for (auto i = 0; i < detectX.size(); i++) {
+  for (unsigned int i = 0; i < detectX.size(); i++) {
     std::cout << "Obstacle " << i << " X: " << detectX[i] << " Y: "
         << detectY[i] << std::endl;
   }

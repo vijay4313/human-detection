@@ -72,10 +72,11 @@ objectDetector::~objectDetector() {
  * @return None
  */
 void objectDetector::findCluster() {
+  unsigned int num = 1;  // Seed to random generator
   // Routine to generate random clusters in data
   auto data = helper.genRMat();
   for (int i = 0; i < maxDetects; i++) {
-    int val = rand_r() % data.size();
+    int val = rand_r(&num) % data.size();
     centroids.push_back(data[val]);
     centroidPos.push_back(val);
   }
