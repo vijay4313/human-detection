@@ -1,3 +1,31 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2018 Venkatraman Narayanan
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software
+ * without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall
+ * be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+
 /**
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    main.cpp
@@ -18,13 +46,13 @@ int main() {
     std::string file = "../data/1418381817129923.bin";
     dataHandler* mydata = new dataHandler();
     mydata->importData(file);
-    vector<double> xMat = mydata->genXMat();
-    vector<double> yMat = mydata->genYMat();
-    vector<double> rMat = mydata->genRMat();
-    objectDetector* mydetector = new objectDetector();
-    mydetector->findCluster(rMat);
-    std::vector<double> detectX = mydetector->findClusterLoc(xMat);
-    std::vector<double> detectY = mydetector->findClusterLoc(yMat);
+    // vector<double> xMat = mydata->genXMat();
+    // vector<double> yMat = mydata->genYMat();
+    // vector<double> rMat = mydata->genRMat();
+    objectDetector* mydetector = new objectDetector(*mydata);
+    mydetector->findCluster();
+    auto detectX = mydetector->findClusterLocX();
+    auto detectY = mydetector->findClusterLocY();
 
     for (auto i = 0; i < detectX.size(); i++) {
     	std::cout << "Obstacle " << i << " X: " << detectX[i] <<

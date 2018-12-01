@@ -27,44 +27,30 @@
 
 
 /**
- *  @Copyright MIT
- *  @file    objectDetectorTest.cpp
+ *  Copyright 2018 Venkatraman Narayanan
+ *  @file    dataHandlerMock.h
  *  @author  Venkatraman Narayanan (vijay4313)
- *  @date    11/30/2018
+ *  @date    10/14/2018
  *
- *  @brief Testing module for objectDetector class
+ *  @brief main routine for human obstacle detection
  */
 
-#include <gtest/gtest.h>
+#ifndef INCLUDE_DATAHANDLERMOCK_H_
+#define INCLUDE_DATAHANDLERMOCK_H_
+
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 #include "dataHandler.h"
 #include "objectDetector.h"
-#include "dataHandlerMock.h"
+#include <vector>
+#include <string>
 
-using ::testing::_;
-using ::testing::AtLeast;
-
-
-TEST(ObjectDetector, InitiationTest) {
-    std::string file = "../data/1418381817129923.bin";
-    // dataHandler* mydata = new dataHandler();
-    // mydata->importData(file);
-    // objectDetector* mydetector = new objectDetector();
-    // mydetector->findCluster(rMat);
-    mockDataHandler mockDH;
-    EXPECT_CALL(mockDH, importData(_))
-				.Times(AtLeast(1));
-
-    mockDH.importData(file);
-    objectDetector myDetector(mockDH);
-    myDetector.findCluster();
-    std::vector<double> detectX = myDetector.findClusterLocX();
-    std::vector<double> detectY = myDetector.findClusterLocY();
-
-	EXPECT_EQ(5, detectX.size());
-	EXPECT_EQ(5, detectY.size());
-}
-
-
-
+class mockDataHandler: public dataHandler {
+public:
+	MOCK_METHOD1(importData, void(std::string &fileName));
+	MOCK_METHOD0(genXMat, std::vector<double>());
+	MOCK_METHOD0(genYMat, std::vector<double>());
+	MOCK_METHOD0(genRMat, std::vector<double>());
+};
+#endif // INCLUDE_DATAHANDLERMOCK_H_
 

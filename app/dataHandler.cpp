@@ -41,6 +41,7 @@ dataHandler::~dataHandler() {
  * 					 load data from
  */
 void dataHandler::importData(const std::string &fileName) {
+	// std::cout << "Fetching File ";
 	std::ifstream file(fileName, std::ios::in|std::ios::binary|std::ios::ate);
 
 	auto size = file.tellg();

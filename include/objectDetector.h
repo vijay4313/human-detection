@@ -17,8 +17,12 @@
 #ifndef INCLUDE_OBJECTDETECTOR_H_
 #define INCLUDE_OBJECTDETECTOR_H_
 
+
 #include <vector>
 #include <map>
+#include <string>
+#include "dataHandler.h"
+
 
 class objectDetector {
 	private:
@@ -26,12 +30,15 @@ class objectDetector {
 		std::vector<double> centroids;  // Placeholder for cluster centroids
 		int maxDetects = 5;  // Placeholder for max number of human detections
 
+
 	public:
+		dataHandler &helper;  // Data Helper Routine
 		/*
 		 * @brief Default constructor for objectDetector
+		 * @param - dataHandler object
+		 * @return - None
 		 */
-		objectDetector();
-
+		objectDetector(dataHandler &_dataIn);
 		/*
 		 * @brief Default destructor for objectDetector
 		 */
@@ -40,10 +47,10 @@ class objectDetector {
 		/*
 		 * @brief Routine to find clusters
 		 * 		  in given data
-		 * @param data - The vector of LiDAR
-		 * 		         reflectance data
+		 * @param - None
+		 * @return - None
 		 */
-		void findCluster(const std::vector<double> &data);
+		void findCluster();
 
 		/*
 		 * @brief Routine to find Loss (error)
@@ -58,10 +65,18 @@ class objectDetector {
 		/*
 		 * @brief Routine to find the location
 		 * 		  of the specified cluster
-		 * @param data - vector of X/Y positions
+		 * @param data - vector of X positions
 		 * @return location of cluster centroids (X/Y axis)
 		 */
-		std::vector<double> findClusterLoc(const std::vector<double> &data);
+		std::vector<double> findClusterLocX();
+
+		/*
+		 * @brief Routine to find the location
+		 * 		  of the specified cluster
+		 * @param data - vector of Y positions
+		 * @return location of cluster centroids (X/Y axis)
+		 */
+		std::vector<double> findClusterLocY();
 
 };
 
