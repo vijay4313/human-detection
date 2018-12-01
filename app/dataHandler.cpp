@@ -51,14 +51,14 @@
  * @brief Default constructor for dataHandler
  */
 dataHandler::dataHandler() {
-	// constructor stub
+  // constructor stub
 }
 
 /*
  * @brief Default destructor for dataHandler
  */
 dataHandler::~dataHandler() {
-	// destructor stub
+  // destructor stub
 }
 
 /*
@@ -69,19 +69,19 @@ dataHandler::~dataHandler() {
  * @return None
  */
 void dataHandler::importData(const std::string &fileName) {
-	// std::cout << "Fetching File ";
-	std::ifstream file(fileName, std::ios::in|std::ios::binary|std::ios::ate);
+  // std::cout << "Fetching File ";
+  std::ifstream file(fileName, std::ios::in | std::ios::binary | std::ios::ate);
 
-	auto size = file.tellg();
+  auto size = file.tellg();
 
-	auto memblock = new char[size];
-	file.seekg(0, std::ios::beg);
-	file.read(memblock, size);
-	file.close();
-
-	double* double_values = (double*) memblock;  // reinterpret as doubles
-	vector<double> values(double_values, double_values + (size / sizeof(double)));
-	std::copy(values.begin(), values.end(), std::back_inserter(scans));
+  auto memblock = new char[size];
+  file.seekg(0, std::ios::beg);
+  file.read(memblock, size);
+  file.close();
+  // reinterpret as doubles
+  auto double_values = reinterpret_cast<double*>(memblock);
+  vector<double> values(double_values, double_values + (size / sizeof(double)));
+  std::copy(values.begin(), values.end(), std::back_inserter(scans));
 }
 
 /*
@@ -90,13 +90,13 @@ void dataHandler::importData(const std::string &fileName) {
  * @return xMat - vector of X-axis positions
  */
 vector<double> dataHandler::genXMat() {
-	vector<double> xMat;  // Placeholder for X-axis pos values
+  vector<double> xMat;  // Placeholder for X-axis pos values
 
-	for(unsigned int i = 0; i < scans.size(); i+=3) {
-		xMat.push_back(scans[i]);
-	}
+  for (unsigned int i = 0; i < scans.size(); i += 3) {
+    xMat.push_back(scans[i]);
+  }
 
-	return xMat;
+  return xMat;
 }
 
 /*
@@ -105,13 +105,13 @@ vector<double> dataHandler::genXMat() {
  * @return yMat - vector of Y-axis positions
  */
 vector<double> dataHandler::genYMat() {
-	vector<double> yMat;  // Placeholder for Y-axis pos values
+  vector<double> yMat;  // Placeholder for Y-axis pos values
 
-	for(unsigned int i = 1; i < scans.size(); i+=3) {
-		yMat.push_back(scans[i]);
-	}
+  for (unsigned int i = 1; i < scans.size(); i += 3) {
+    yMat.push_back(scans[i]);
+  }
 
-	return yMat;
+  return yMat;
 }
 
 /*
@@ -121,13 +121,12 @@ vector<double> dataHandler::genYMat() {
  * @return rMat - vector of reflectance values
  */
 vector<double> dataHandler::genRMat() {
-	vector<double> rMat;  // Placeholder for reflectance values
+  vector<double> rMat;  // Placeholder for reflectance values
 
-	for(unsigned int i = 2; i < scans.size(); i+=3) {
-		rMat.push_back(scans[i]);
-	}
+  for (unsigned int i = 2; i < scans.size(); i += 3) {
+    rMat.push_back(scans[i]);
+  }
 
-	return rMat;
+  return rMat;
 }
-
 

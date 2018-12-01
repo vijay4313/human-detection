@@ -25,7 +25,6 @@
  * IN THE SOFTWARE.
  */
 
-
 /**
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    dataHandlerMock.h
@@ -48,12 +47,12 @@
 /*
  * @brief Mock class to test ObjectDetector
  */
-class mockDataHandler: public dataHandler {
-public:
-	MOCK_METHOD1(importData, void(std::string &fileName));
-	MOCK_METHOD0(genXMat, std::vector<double>());
-	MOCK_METHOD0(genYMat, std::vector<double>());
-	MOCK_METHOD0(genRMat, std::vector<double>());
+class mockDataHandler : public dataHandler {
+ public:
+  MOCK_METHOD1(importData, void(std::string &fileName));
+  MOCK_METHOD0(genXMat, std::vector<double>());
+  MOCK_METHOD0(genYMat, std::vector<double>());
+  MOCK_METHOD0(genRMat, std::vector<double>());
 };
 #endif // INCLUDE_DATAHANDLERMOCK_H_
 

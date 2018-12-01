@@ -40,7 +40,6 @@
  *
  */
 
-
 #include <vector>
 #include <string>
 
@@ -53,54 +52,54 @@ using std::vector;
  * LiDar scan data to the environment
  */
 class dataHandler {
-	private:
-		vector<double> scans;  // Placeholder for LiDAR scans
+ private:
+  vector<double> scans;  // Placeholder for LiDAR scans
 
-	public:
-		/*
-		 * @brief Default constructor for dataHandler
-		 * @param None
-		 * @return None
-		 */
-		dataHandler();
+ public:
+  /*
+   * @brief Default constructor for dataHandler
+   * @param None
+   * @return None
+   */
+  dataHandler();
 
-		/*
-		 * @brief Default destructor for dataHandler
-		 * @param None
-		 * @return None
-		 */
-		virtual ~dataHandler();
+  /*
+   * @brief Default destructor for dataHandler
+   * @param None
+   * @return None
+   */
+  virtual ~dataHandler();
 
-		/*
-		 * @brief Routine to import data
-		 * 		  from given file
-		 * @param fileName - The .bin file to
-		 * 					 load data from
-		 * @return None
-		 */
-		void importData(const std::string &fileName);
+  /*
+   * @brief Routine to import data
+   * 		  from given file
+   * @param fileName - The .bin file to
+   * 					 load data from
+   * @return None
+   */
+  void importData(const std::string &fileName);
 
-		/*
-		 * @brief Routine to extract X-axis pos values
-		 * @param None
-		 * @return vector of X-axis positions
-		 */
-		vector<double> genXMat();
+  /*
+   * @brief Routine to extract X-axis pos values
+   * @param None
+   * @return vector of X-axis positions
+   */
+  vector<double> genXMat();
 
-		/*
-		 * @brief Routine to extract Y-axis pos values
-		 * @param None
-		 * @return vector of Y-axis positions
-		 */
-		vector<double> genYMat();
+  /*
+   * @brief Routine to extract Y-axis pos values
+   * @param None
+   * @return vector of Y-axis positions
+   */
+  vector<double> genYMat();
 
-		/*
-		 * @brief Routine to extract
-		 * 		  reflectance values of LiDAR
-	     * @param None
-		 * @return vector of reflectance values
-		 */
-		vector<double> genRMat();
+  /*
+   * @brief Routine to extract
+   * 		  reflectance values of LiDAR
+   * @param None
+   * @return vector of reflectance values
+   */
+  vector<double> genRMat();
 };
 
 #endif // INCLUDE_DATAHANDLER_H_

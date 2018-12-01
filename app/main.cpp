@@ -25,7 +25,6 @@
  * IN THE SOFTWARE.
  */
 
-
 /**
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    main.cpp
@@ -35,7 +34,6 @@
  *  @brief main routine for human obstacle detection
  */
 
-
 #include <iostream>
 #include <memory>
 
@@ -43,20 +41,20 @@
 #include "objectDetector.h"
 
 int main() {
-    std::string file = "../data/1418381817129923.bin";
-    dataHandler* mydata = new dataHandler();
-    mydata->importData(file);
-    // vector<double> xMat = mydata->genXMat();
-    // vector<double> yMat = mydata->genYMat();
-    // vector<double> rMat = mydata->genRMat();
-    objectDetector* mydetector = new objectDetector(*mydata);
-    mydetector->findCluster();
-    auto detectX = mydetector->findClusterLocX();
-    auto detectY = mydetector->findClusterLocY();
+  std::string file = "../data/1418381817129923.bin";
+  dataHandler* mydata = new dataHandler();
+  mydata->importData(file);
+  // vector<double> xMat = mydata->genXMat();
+  // vector<double> yMat = mydata->genYMat();
+  // vector<double> rMat = mydata->genRMat();
+  objectDetector* mydetector = new objectDetector(*mydata);
+  mydetector->findCluster();
+  auto detectX = mydetector->findClusterLocX();
+  auto detectY = mydetector->findClusterLocY();
 
-    for (auto i = 0; i < detectX.size(); i++) {
-    	std::cout << "Obstacle " << i << " X: " << detectX[i] <<
-    			" Y: " << detectY[i] << std::endl;
-    }
-    return 0;
+  for (auto i = 0; i < detectX.size(); i++) {
+    std::cout << "Obstacle " << i << " X: " << detectX[i] << " Y: "
+        << detectY[i] << std::endl;
+  }
+  return 0;
 }

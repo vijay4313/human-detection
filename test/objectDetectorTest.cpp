@@ -25,7 +25,6 @@
  * IN THE SOFTWARE.
  */
 
-
 /**
  *  @Copyright MIT
  *  @file    objectDetectorTest.cpp
@@ -44,23 +43,18 @@
 using ::testing::_;
 using ::testing::AtLeast;
 
-
 TEST(ObjectDetector, InitiationTest) {
-    std::string file = "../data/1418381817129923.bin";
-    mockDataHandler mockDH;
-    EXPECT_CALL(mockDH, importData(_))
-				.Times(AtLeast(1));
+  std::string file = "../data/1418381817129923.bin";
+  mockDataHandler mockDH;
+  EXPECT_CALL(mockDH, importData(_)).Times(AtLeast(1));
 
-    mockDH.importData(file);
-    objectDetector myDetector(mockDH);
-    myDetector.findCluster();
-    std::vector<double> detectX = myDetector.findClusterLocX();
-    std::vector<double> detectY = myDetector.findClusterLocY();
+  mockDH.importData(file);
+  objectDetector myDetector(mockDH);
+  myDetector.findCluster();
+  std::vector<double> detectX = myDetector.findClusterLocX();
+  std::vector<double> detectY = myDetector.findClusterLocY();
 
-	EXPECT_EQ(5, detectX.size());
-	EXPECT_EQ(5, detectY.size());
+  EXPECT_EQ(5, detectX.size());
+  EXPECT_EQ(5, detectY.size());
 }
-
-
-
 

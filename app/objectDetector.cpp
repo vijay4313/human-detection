@@ -25,7 +25,6 @@
  * IN THE SOFTWARE.
  */
 
-
 /**
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    objectDetector.cpp
@@ -51,8 +50,9 @@
  * @param - dataHandler object
  * @return - None
  */
-objectDetector::objectDetector(dataHandler &_dataIn) : helper(_dataIn) {
-	helper.importData("../data/1418381817129923.bin");
+objectDetector::objectDetector(dataHandler &_dataIn)
+    : helper(_dataIn) {
+  helper.importData("../data/1418381817129923.bin");
 }
 
 /*
@@ -61,7 +61,7 @@ objectDetector::objectDetector(dataHandler &_dataIn) : helper(_dataIn) {
  * @return None
  */
 objectDetector::~objectDetector() {
-	// destructor stub
+  // destructor stub
 }
 
 /*
@@ -72,23 +72,22 @@ objectDetector::~objectDetector() {
  * @return None
  */
 void objectDetector::findCluster() {
-	// Routine to generate random clusters in data
-	auto data = helper.genRMat();
-	for(int i = 0; i < maxDetects; i++) {
-		int val = rand()% data.size();
-		centroids.push_back(data[val]);
-		centroidPos.push_back(val);
-	}
+  // Routine to generate random clusters in data
+  auto data = helper.genRMat();
+  for (int i = 0; i < maxDetects; i++) {
+    int val = rand_r() % data.size();
+    centroids.push_back(data[val]);
+    centroidPos.push_back(val);
+  }
 
-	// Routine to identify the right cluster
-	std::map<double, int> assignments;
-	for (int i = 0; i < 100; i++) {
-		for (auto j : data) {
-			auto differences = getLoss(j);
-			auto min = *std::min_element(differences.begin(), differences.end());
-			assignments[j] = min;
-		}
-	}
+  // Routine to identify the right cluster
+  for (int i = 0; i < 100; i++) {
+    for (auto j : data) {
+      auto differences = getLoss(j);
+      auto min = *std::min_element(differences.begin(), differences.end());
+      centroidPos[1] = min;
+    }
+  }
 }
 
 /*
@@ -100,12 +99,12 @@ void objectDetector::findCluster() {
  * 				     distance from each centroid
  */
 std::vector<double> objectDetector::getLoss(const double &v1) {
-	std::vector<double> diffVec;  // Placeholder for loss value
-	for (auto &i : centroids) {
-		double diff = i - v1;
-		diffVec.push_back(diff * diff);
-	}
-	return diffVec;
+  std::vector<double> diffVec;  // Placeholder for loss value
+  for (auto &i : centroids) {
+    double diff = i - v1;
+    diffVec.push_back(diff * diff);
+  }
+  return diffVec;
 }
 
 /*
@@ -115,12 +114,12 @@ std::vector<double> objectDetector::getLoss(const double &v1) {
  * @return v - location of cluster centroids (X axis)
  */
 std::vector<double> objectDetector::findClusterLocX() {
-	std::vector<double> v;  // Placeholder for cluster location
-	auto data = helper.genXMat();
-	for(auto &j : centroidPos) {
-		v.push_back(data[j]);
-	}
-	return v;
+  std::vector<double> v;  // Placeholder for cluster location
+  auto data = helper.genXMat();
+  for (auto &j : centroidPos) {
+    v.push_back(data[j]);
+  }
+  return v;
 }
 
 /*
@@ -130,10 +129,10 @@ std::vector<double> objectDetector::findClusterLocX() {
  * @return v - location of cluster centroids (Y axis)
  */
 std::vector<double> objectDetector::findClusterLocY() {
-	std::vector<double> v;  // Placeholder for cluster location
-	auto data = helper.genYMat();
-	for(auto &j : centroidPos) {
-		v.push_back(data[j]);
-	}
-	return v;
+  std::vector<double> v;  // Placeholder for cluster location
+  auto data = helper.genYMat();
+  for (auto &j : centroidPos) {
+    v.push_back(data[j]);
+  }
+  return v;
 }
