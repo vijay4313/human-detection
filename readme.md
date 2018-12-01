@@ -1,4 +1,4 @@
-# Human Obstruction Detection with 2D LiDAR
+# Testing Human Detection Algorithm with GMock
 [![Build Status](https://travis-ci.org/vijay4313/human-detection.svg?branch=master)](https://travis-ci.org/vijay4313/human-detection)
 [![Coverage Status](https://coveralls.io/repos/github/vijay4313/human-detection/badge.svg?branch=master)](https://coveralls.io/github/vijay4313/human-detection?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,19 +6,17 @@
 
 ## Overview
 
-Obstacle/Human detection plays a vital role in field of robotics. Specifically, in the field of autonomous driving, the ability to accurately detect and track humans presents a major barrier to the large scale deployment of service robots in populated environments. This project aims to implement a robust human obstacle detection framework, utilizing 2D LiDAR data and sophisticated object detection algorithms on C++ platform.
+Obstacle/Human detection plays a vital role in field of robotics. Specifically, in the field of autonomous driving, the ability to accurately detect and track humans presents a major barrier to the large scale deployment of service robots in populated environments. This project aims to implement a robust human obstacle detection framework, utilizing 2D LiDAR data and sophisticated object detection algorithms on C++ platform. 
+Additionally, this branch, aims at incorporating GMock library for robust testing of the implementation.
 
-##### Methodology:
-The system development follows a first principles approach with definitive stages, Project initiation, Data procurement, Data preprocessing, Clustering, Estimation & Matching, Testing, Demo. The advances with the data procurement phase with the kickoff approval in the project initiation phase. The project is carried out with agile concepts as a backbone, showcasing the concepts of Solo iterative process (SIP), Test Driven Development (TDD) and Continuous Integration (CI). The scrum/sprint plan for th project is attached below.
-
-## Product Backlog and Sprint Schedule
-The process development schedule and the sprint plan can be found in the [link][reference-id-for-srint-plan].
-
-[reference-id-for-srint-plan]: https://docs.google.com/spreadsheets/d/1XKLqew9CH7pwG7_CvTs3gmQOBBpcz4UapiZnu-ZG-o4/edit#gid=383324177
+## Dependencies
+* cmake
+* gtest
+* gmock
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/vijay4313/human-detection
+git clone -b GMock_Extra_Credit --single-branch https://github.com/vijay4313/human-detection
 cd <path to repository>
 mkdir build
 cd build
@@ -27,8 +25,13 @@ make
 Run tests: ./test/cpp-test
 Run program: ./app/shell-app
 ```
+## GMock Testing Framework
 
-## Building for code coverage (for assignments beginning in Week 4)
+A virtual dataHandler class, used for import/manipulate LiDAR scan data, is created for the GMock testing. The virtual methods are utilized by the objectDetector class to run classfication algorithms on the LiDAR scans. The ```dataHandlerMock.h``` file consists all the necessary initiations for virtual class. the virtual class is used by the ```objectDetectorTest.cpp``` to verify function calls to the virtual dataHandler class from the objectDetector class.
+
+For more details on GMock, [click here](https://github.com/abseil/googletest/blob/master/googlemock/docs/ForDummies.md).
+
+## Building for code coverage 
 ```
 sudo apt-get install lcov
 cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
@@ -37,9 +40,9 @@ make code_coverage
 ```
 This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
 
-## Working with Eclipse IDE ##
+## Working with Eclipse IDE
 
-## Installation
+### Installation
 
 In your Eclipse workspace directory (or create a new one), checkout the repo (and submodules)
 ```
@@ -57,22 +60,22 @@ cd boilerplate-eclipse
 cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.0 -D CMAKE_CXX_COMPILER_ARG1=-std=c++14 ../Project/
 ```
 
-## Import
+### Import
 
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
 Select "boilerplate-eclipse" directory created previously as root directory -> Finish
 
-# Edit
+### Edit
 
 Source files may be edited under the "[Source Directory]" label in the Project Explorer.
 
 
-## Build
+### Build
 
 To build the project, in Eclipse, unfold boilerplate-eclipse project in Project Explorer,
 unfold Build Targets, double click on "all" to build all projects.
 
-## Run
+### Run
 
 1. In Eclipse, right click on the boilerplate-eclipse in Project Explorer,
 select Run As -> Local C/C++ Application
@@ -80,53 +83,4 @@ select Run As -> Local C/C++ Application
 2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
 
 
-## Debug
 
-
-1. Set breakpoint in source file (i.e. double click in the left margin on the line you want 
-the program to break).
-
-2. In Eclipse, right click on the boilerplate-eclipse in Project Explorer, select Debug As -> 
-Local C/C++ Application, choose the binaries to run (e.g. shell-app).
-
-3. If prompt to "Confirm Perspective Switch", select yes.
-
-4. Program will break at the breakpoint you set.
-
-5. Press Step Into (F5), Step Over (F6), Step Return (F7) to step/debug your program.
-
-6. Right click on the variable in editor to add watch expression to watch the variable in 
-debugger window.
-
-7. Press Terminate icon to terminate debugging and press C/C++ icon to switch back to C/C++ 
-perspetive view (or Windows->Perspective->Open Perspective->C/C++).
-
-
-## Plugins
-
-- CppChEclipse
-
-    To install and run cppcheck in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> cppcheclipse.
-    Set cppcheck binary path to "/usr/bin/cppcheck".
-
-    2. To run CPPCheck on a project, right click on the project name in the Project Explorer 
-    and choose cppcheck -> Run cppcheck.
-
-
-- Google C++ Sytle
-
-    To include and use Google C++ Style formatter in Eclipse
-
-    1. In Eclipse, go to Window -> Preferences -> C/C++ -> Code Style -> Formatter. 
-    Import [eclipse-cpp-google-style][reference-id-for-eclipse-cpp-google-style] and apply.
-
-    2. To use Google C++ style formatter, right click on the source code or folder in 
-    Project Explorer and choose Source -> Format
-
-[reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
