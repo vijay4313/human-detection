@@ -1,3 +1,30 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2018 Venkatraman Narayanan
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software
+ * without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall
+ * be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
 /**
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    dataHandler.cpp
@@ -39,6 +66,7 @@ dataHandler::~dataHandler() {
  * 		  from given file
  * @param fileName - The .bin file to
  * 					 load data from
+ * @return None
  */
 void dataHandler::importData(const std::string &fileName) {
 	// std::cout << "Fetching File ";
@@ -58,6 +86,7 @@ void dataHandler::importData(const std::string &fileName) {
 
 /*
  * @brief Routine to extract X-axis pos values
+ * @param None
  * @return xMat - vector of X-axis positions
  */
 vector<double> dataHandler::genXMat() {
@@ -72,6 +101,7 @@ vector<double> dataHandler::genXMat() {
 
 /*
  * @brief Routine to extract Y-axis pos values
+ * @param None
  * @return yMat - vector of Y-axis positions
  */
 vector<double> dataHandler::genYMat() {
@@ -87,6 +117,7 @@ vector<double> dataHandler::genYMat() {
 /*
  * @brief Routine to extract
  * 		  reflectance values of LiDAR
+ * @param None
  * @return rMat - vector of reflectance values
  */
 vector<double> dataHandler::genRMat() {

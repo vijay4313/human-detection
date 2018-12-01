@@ -30,9 +30,9 @@
  *  Copyright 2018 Venkatraman Narayanan
  *  @file    dataHandlerMock.h
  *  @author  Venkatraman Narayanan (vijay4313)
- *  @date    10/14/2018
+ *  @date    11/30/2018
  *
- *  @brief main routine for human obstacle detection
+ *  @brief Routine to mock DataHandler class
  */
 
 #ifndef INCLUDE_DATAHANDLERMOCK_H_
@@ -45,6 +45,9 @@
 #include <vector>
 #include <string>
 
+/*
+ * @brief Mock class to test ObjectDetector
+ */
 class mockDataHandler: public dataHandler {
 public:
 	MOCK_METHOD1(importData, void(std::string &fileName));

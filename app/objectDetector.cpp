@@ -57,6 +57,8 @@ objectDetector::objectDetector(dataHandler &_dataIn) : helper(_dataIn) {
 
 /*
  * @brief Default destructor for objectDetector
+ * @param None
+ * @return None
  */
 objectDetector::~objectDetector() {
 	// destructor stub
@@ -67,6 +69,7 @@ objectDetector::~objectDetector() {
  * 		  in given data
  * @param data - The vector of LiDAR
  * 		         reflectance data
+ * @return None
  */
 void objectDetector::findCluster() {
 	// Routine to generate random clusters in data

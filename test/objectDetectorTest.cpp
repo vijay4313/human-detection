@@ -47,10 +47,6 @@ using ::testing::AtLeast;
 
 TEST(ObjectDetector, InitiationTest) {
     std::string file = "../data/1418381817129923.bin";
-    // dataHandler* mydata = new dataHandler();
-    // mydata->importData(file);
-    // objectDetector* mydetector = new objectDetector();
-    // mydetector->findCluster(rMat);
     mockDataHandler mockDH;
     EXPECT_CALL(mockDH, importData(_))
 				.Times(AtLeast(1));

@@ -23,16 +23,19 @@
 #include <string>
 #include "dataHandler.h"
 
-
+/*
+ * @brief ObjectDetector class
+ * to identify human/objects in LiDar Scans
+ */
 class objectDetector {
 	private:
 		std::vector<int> centroidPos;  // Placeholder for cluster centroid positions
 		std::vector<double> centroids;  // Placeholder for cluster centroids
 		int maxDetects = 5;  // Placeholder for max number of human detections
+		dataHandler &helper;  // Data Helper Routine
 
 
 	public:
-		dataHandler &helper;  // Data Helper Routine
 		/*
 		 * @brief Default constructor for objectDetector
 		 * @param - dataHandler object
@@ -41,6 +44,8 @@ class objectDetector {
 		objectDetector(dataHandler &_dataIn);
 		/*
 		 * @brief Default destructor for objectDetector
+		 * @param - None
+		 * @return - None
 		 */
 		virtual ~objectDetector();
 
